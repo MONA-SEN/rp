@@ -1,0 +1,33 @@
+1.GETTING USED TO R
+grades <- c(85, 90, 78, 92, 88, 76, 95, 89, 84, 91) mean_grade <- mean(grades) cat(“Mean of the grades:”, mean_grade, “\n”) median_grade <- median(grades) cat(“Median of the grades:”, median_grade,”\n”) sd_grade <- sd(grades) cat(“Standard Deviation of the grades:”, sd_grade,”\n”) summary_stats <- summary(grades) cat(“\nSummary of the grades:”) print(summary_stats)
+
+
+2. CREATING AND DISPLAYING DATA
+employee_names <- c("John Doe", "Jane Smith", "Peter Johnson", "Emily Davis", "Michael 
+Brown") 
+employee_ages <- c(30, 25, 45, 40, 35) 
+employee_salaries <- c(55000, 62000, 75000, 68000, 72000) 
+employee_data <- data.frame(Name = employee_names, Age = employee_ages, Salary = 
+employee_salaries) 
+print("Employee Data:") 
+print(employee_data)
+
+3. CREATING AND MANIPULATING A LIST AND AN ARRAY
+
+# Create a 3x3 array of student scores students_scores <- array(c(85, 90, 75, 88, 92, 80, 78, 89, 91), dim = c(3, 3), dimnames = list(c("Alice", "Bob", "Charlie"), c("Math", "Science", "English"))) # Display the original array EXP.NO: 3 DATE:5.9.24 CREATING AND MANIPULATING A LIST AND AN ARRAY cat("\nOriginal Array of Student Scores:\n") print(students_scores) # Modify a score in the array (update Bob's Science score) students_scores["Bob", "Science"] <- 95 cat("\nAfter updating Bob's Science score to 95:\n") print(students_scores) # Add a new student's scores to the array (David) new_student_scores <- c(82, 88, 84) # Scores for Math, Science, and English students_scores <- rbind(students_scores, David = new_student_scores) cat("\nAfter adding a new student (David) with scores:\n") print(students_scores) # Removing a student from the array (Charlie) students_scores <- students_scores[-which(rownames(students_scores) == "Charlie"),] cat("\nAfter removing Charlie from the array:\n") print(students_scores) # Display the final array of student scores cat("\nFinal Array of Student Scores:\n") print(students_scores)
+
+5A. STRING MANIPULATIONS
+library(stringr) data <- data.frame( name = c("Alice", "Bob", "Charlie"), contact_info = c("alice@example.com", "bob@example.com", "charlie@example.com") ) data$email <- str_extract(data$contact_info, "\\S+@\\S+") data$email_upper <- toupper(data$email) print(data)
+
+5B
+# Load necessary library library(dplyr) # Create a dataset containing customer names and email addresses customer_data <- data.frame( Name = c("Alice Johnson", "Bob Smith", "Charlie Brown"), Email = c("alice.johnson@example.com", "bob.smith@example.net", "charlie.brown@example.com") ) # Split full names into first and last names customer_data <- customer_data %>% mutate( First_Name = sapply(strsplit(as.character(Name), " "), `[`, 1), Last_Name = sapply(strsplit(as.character(Name), " "), `[`, 2) ) EXP.NO: 5 b DATE:27.9.24 STRING MANIPULATIONS # Extract domain names from email addresses customer_data$Domain <- sub(".*@", "", customer_data$Email) # Check if the email domain matches a specific domain (e.g., "example.com") target_domain <- "example.com" customer_data$Is_Target_Domain <- customer_data$Domain == target_domain print(customer_data)
+
+
+6. DATA TRANSPOSE OPERATIONS
+data <- data.frame( Name = c("Alice", "Bob", "Charlie"), Age = c(25, 30, 35), Height = c(5.5, 6.0, 5.8) ) print("Original Dataset:") print(data) transposed_data <- t(data) transposed_df <- as.data.frame(transposed_data) print("Transposed Dataset:") print(transposed_df)
+
+7. NORMAL DISTRIBUTION SIMULATION
+mean_value <- 0 sd_value <- 1 random_data <- rnorm(n = 1000, mean = mean_value, sd = sd_value) print("Summary Statistics:") summary(random_data) hist(random_data, breaks = 30, probability = TRUE, main = "Normal Distribution (mean = 0, sd = 1)", xlab = "Value", col = "lightblue") curve(dnorm(x, mean = mean_value, sd = sd_value), col = "darkblue", lwd = 2, add = TRUE)
+
+8. BASIC STATISTICS IN R
+heights <- c(150, 160, 165, 170, 175, 180, 185, 190, 195, 200) mean_height <- mean(heights) cat("Mean Height:", mean_height, "\n") median_height <- median(heights) cat("Median Height:", median_height, "\n") sd_height <- sd(heights) cat("Standard Deviation of Height:", sd_height, "\n") EXP.NO: 8 DATE:22.10.24 BASIC STATISTICS IN R weights <- c(55, 60, 63, 67, 70, 73, 76, 80, 85, 90) correlation_hw <- cor(heights, weights) cat("Correlation between Height and Weight:", correlation_hw, "\n")
